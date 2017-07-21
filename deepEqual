@@ -1,0 +1,29 @@
+function deepEqual(x,y) {
+  var boolVal = false;
+  var xSize = 0;
+  var ySize = 0;
+  if (typeof x === "object" && x != null && typeof y === "object" && y != null) {
+    for (var n in x) {
+     xSize += 1;
+    }
+    for (var prop in y) {
+          ySize += 1;
+          if (!(prop in x) || !deepEqual(x[prop], y[prop])) {
+              return false;
+          }
+      }
+      return xSize == ySize;
+  }
+  else if (x === y) {
+    boolVal = true;
+  }
+  return boolVal;
+}
+
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
