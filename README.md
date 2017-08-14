@@ -1,2 +1,1 @@
-# CS290
-Homework/Projects etc
+# finalprojCS290
